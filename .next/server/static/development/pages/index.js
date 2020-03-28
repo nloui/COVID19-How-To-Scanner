@@ -1,0 +1,435 @@
+module.exports =
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = require('../../../ssr-module-cache.js');
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		var threw = true;
+/******/ 		try {
+/******/ 			modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/ 			threw = false;
+/******/ 		} finally {
+/******/ 			if(threw) delete installedModules[moduleId];
+/******/ 		}
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./components/Article.js":
+/*!*******************************!*\
+  !*** ./components/Article.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var evergreen_ui__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! evergreen-ui */ "evergreen-ui");
+/* harmony import */ var evergreen_ui__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(evergreen_ui__WEBPACK_IMPORTED_MODULE_1__);
+var _jsxFileName = "/Users/nickloui/Dev/sandbox/COVID19-How-To-Scanner/components/Article.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+class Article extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isShown: false
+    };
+  }
+
+  render() {
+    const {
+      title,
+      summary,
+      badges,
+      count
+    } = this.props;
+    const {
+      isShown
+    } = this.state;
+    return __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_1__["Pane"], {
+      display: "flex",
+      padding: 16,
+      margin: 16,
+      background: "tint2",
+      borderRadius: 3,
+      flexDirection: "column",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 20,
+        columnNumber: 7
+      }
+    }, __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_1__["Heading"], {
+      size: 600,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 21,
+        columnNumber: 9
+      }
+    }, title, __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_1__["Pill"], {
+      display: "inline-flex",
+      margin: 8,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 23,
+        columnNumber: 11
+      }
+    }, count && count.toLocaleString())), __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_1__["Text"], {
+      color: "muted",
+      marginTop: "default",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 25,
+        columnNumber: 9
+      }
+    }, summary), __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_1__["Pane"], {
+      display: "flex",
+      flexDirection: "row",
+      height: 40,
+      alignItems: "center",
+      justifyContent: "space-between",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 26,
+        columnNumber: 9
+      }
+    }, __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_1__["Pane"], {
+      paddingTop: 16,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 27,
+        columnNumber: 11
+      }
+    }, badges.map(b => __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_1__["Badge"], {
+      color: b.color,
+      key: b.label,
+      marginRight: 8,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 29,
+        columnNumber: 22
+      }
+    }, b.label))), __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+      marginTop: 16,
+      iconAfter: "arrow-right",
+      appearance: "minimal",
+      onClick: () => this.setState({
+        isShown: true
+      }),
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 32,
+        columnNumber: 11
+      }
+    }, "Explore Articles")), __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_1__["SideSheet"], {
+      isShown: isShown,
+      onCloseComplete: () => this.setState({
+        isShown: false
+      }),
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 34,
+        columnNumber: 9
+      }
+    }, __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_1__["Pane"], {
+      padding: 16,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 38,
+        columnNumber: 11
+      }
+    }, __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_1__["Heading"], {
+      size: 600,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 39,
+        columnNumber: 13
+      }
+    }, "Article Headline"), __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_1__["Paragraph"], {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 40,
+        columnNumber: 13
+      }
+    }, "Basic Example"))));
+  }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Article);
+
+/***/ }),
+
+/***/ "./pages/index.js":
+/*!************************!*\
+  !*** ./pages/index.js ***!
+  \************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var evergreen_ui__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! evergreen-ui */ "evergreen-ui");
+/* harmony import */ var evergreen_ui__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(evergreen_ui__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_Article__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Article */ "./components/Article.js");
+/* harmony import */ var _styles_styles_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../styles/styles.scss */ "./styles/styles.scss");
+/* harmony import */ var _styles_styles_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_styles_styles_scss__WEBPACK_IMPORTED_MODULE_3__);
+var _jsxFileName = "/Users/nickloui/Dev/sandbox/COVID19-How-To-Scanner/pages/index.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+
+class Index extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+  render() {
+    return __jsx("div", {
+      id: "App",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 10,
+        columnNumber: 7
+      }
+    }, __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_1__["Pane"], {
+      display: "flex",
+      height: 100,
+      alignItems: "center",
+      justifyContent: "center",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 11,
+        columnNumber: 7
+      }
+    }, __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_1__["Heading"], {
+      size: 800,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 12,
+        columnNumber: 9
+      }
+    }, "COVID-19 \"How To\" Tracker")), __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_1__["Pane"], {
+      display: "flex",
+      height: 50,
+      alignItems: "center",
+      justifyContent: "center",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 14,
+        columnNumber: 7
+      }
+    }, __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_1__["Text"], {
+      size: 500,
+      color: "muted",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 15,
+        columnNumber: 9
+      }
+    }, "Common Themes")), __jsx(_components_Article__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      title: "Clean / Home",
+      summary: `Example headlines include "Covid-19 tips: How to clean your home".`,
+      badges: [{
+        "color": "neutral",
+        "label": "Cleaning"
+      }, {
+        "color": "green",
+        "label": "Home"
+      }],
+      count: 2000,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 17,
+        columnNumber: 7
+      }
+    }), __jsx(_components_Article__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      title: "Masks / Handmake",
+      summary: `Example headlines include "How to make your own mask out of toilet paper!".`,
+      badges: [{
+        "color": "red",
+        "label": "Home Made"
+      }, {
+        "color": "neutral",
+        "label": "Masks"
+      }],
+      count: 500,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 18,
+        columnNumber: 7
+      }
+    }), __jsx(_components_Article__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      title: "Testing",
+      summary: `Example headlines include "How to self diagnose COVID-19!".`,
+      badges: [{
+        "color": "red",
+        "label": "Self Diagnosis"
+      }, {
+        "color": "neutral",
+        "label": "Testing"
+      }],
+      count: 250,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 19,
+        columnNumber: 7
+      }
+    }));
+  }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Index);
+
+/***/ }),
+
+/***/ "./styles/styles.scss":
+/*!****************************!*\
+  !*** ./styles/styles.scss ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ 3:
+/*!******************************!*\
+  !*** multi ./pages/index.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! /Users/nickloui/Dev/sandbox/COVID19-How-To-Scanner/pages/index.js */"./pages/index.js");
+
+
+/***/ }),
+
+/***/ "evergreen-ui":
+/*!*******************************!*\
+  !*** external "evergreen-ui" ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("evergreen-ui");
+
+/***/ }),
+
+/***/ "react":
+/*!************************!*\
+  !*** external "react" ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react");
+
+/***/ })
+
+/******/ });
+//# sourceMappingURL=index.js.map
