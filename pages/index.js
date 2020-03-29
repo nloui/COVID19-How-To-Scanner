@@ -15,7 +15,7 @@ class Index extends Component {
       <Pane display="flex" height={50} alignItems="center" justifyContent="center">
         <Text size={500} color="muted">Common Themes</Text>
       </Pane>
-      {clusters.map((c)=>(<Article title={c.Cluster} summary={c.Summary} badges={[{"color":"neutral","label":"Cleaning"}, {"color":"green","label":"Home"}]} articles={c.Documents} />))}
+      {clusters && clusters.map((c)=>(<Article title={c.Cluster} summary={c.Summary} badges={c.Words} articles={c.Documents} />))}
 
       </div>
     );

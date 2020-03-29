@@ -396,22 +396,16 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         lineNumber: 16,
         columnNumber: 9
       }
-    }, "Common Themes")), clusters.map(c => __jsx(_components_Article__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    }, "Common Themes")), clusters && clusters.map(c => __jsx(_components_Article__WEBPACK_IMPORTED_MODULE_2__["default"], {
       title: c.Cluster,
       summary: c.Summary,
-      badges: [{
-        "color": "neutral",
-        "label": "Cleaning"
-      }, {
-        "color": "green",
-        "label": "Home"
-      }],
+      badges: c.Words,
       articles: c.Documents,
       __self: this,
       __source: {
         fileName: _jsxFileName,
         lineNumber: 18,
-        columnNumber: 27
+        columnNumber: 39
       }
     })));
   }
