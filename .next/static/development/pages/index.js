@@ -44,7 +44,21 @@ var Article = /*#__PURE__*/function (_Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      isShown: false
+      isShown: false,
+      options: [{
+        label: 'All',
+        value: null
+      }, {
+        label: 'News',
+        value: 'newsmedia'
+      }, {
+        label: 'Social',
+        value: 'social'
+      }, {
+        label: 'YouTube',
+        value: 'youtube'
+      }],
+      filter: null
     };
     return _this;
   }
@@ -58,7 +72,7 @@ var Article = /*#__PURE__*/function (_Component) {
           title = _this$props.title,
           summary = _this$props.summary,
           badges = _this$props.badges,
-          count = _this$props.count;
+          articles = _this$props.articles;
       var isShown = this.state.isShown;
       return __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_6__["Pane"], {
         display: "flex",
@@ -70,7 +84,7 @@ var Article = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 20,
+          lineNumber: 27,
           columnNumber: 7
         }
       }, __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_6__["Heading"], {
@@ -78,7 +92,7 @@ var Article = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 21,
+          lineNumber: 28,
           columnNumber: 9
         }
       }, title, __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_6__["Pill"], {
@@ -87,16 +101,16 @@ var Article = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 23,
+          lineNumber: 30,
           columnNumber: 11
         }
-      }, count && count.toLocaleString())), __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_6__["Text"], {
+      }, articles && articles.length.toLocaleString())), __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_6__["Text"], {
         color: "muted",
         marginTop: "default",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 25,
+          lineNumber: 32,
           columnNumber: 9
         }
       }, summary), __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_6__["Pane"], {
@@ -108,7 +122,7 @@ var Article = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 26,
+          lineNumber: 33,
           columnNumber: 9
         }
       }, __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_6__["Pane"], {
@@ -116,7 +130,7 @@ var Article = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 27,
+          lineNumber: 34,
           columnNumber: 11
         }
       }, badges.map(function (b) {
@@ -127,7 +141,7 @@ var Article = /*#__PURE__*/function (_Component) {
           __self: _this2,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 29,
+            lineNumber: 36,
             columnNumber: 22
           }
         }, b.label);
@@ -143,7 +157,7 @@ var Article = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 32,
+          lineNumber: 39,
           columnNumber: 11
         }
       }, "Explore Articles")), __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_6__["SideSheet"], {
@@ -156,7 +170,7 @@ var Article = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 34,
+          lineNumber: 41,
           columnNumber: 9
         }
       }, __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_6__["Pane"], {
@@ -164,25 +178,80 @@ var Article = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 38,
+          lineNumber: 45,
           columnNumber: 11
         }
-      }, __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_6__["Heading"], {
-        size: 600,
+      }, __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_6__["Pane"], {
+        padding: 16,
+        margin: 0,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 39,
+          lineNumber: 46,
           columnNumber: 13
         }
-      }, "Article Headline"), __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_6__["Paragraph"], {
+      }, __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_6__["SegmentedControl"], {
+        width: 240,
+        options: this.state.options,
+        value: this.state.filter,
+        onChange: function onChange(value) {
+          return _this2.setState({
+            filter: value
+          });
+        },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 40,
-          columnNumber: 13
+          lineNumber: 54,
+          columnNumber: 15
         }
-      }, "Basic Example"))));
+      })), articles.filter(function (x) {
+        return _this2.state.filter ? x.source === _this2.state.filter : true;
+      }).map(function (d) {
+        return __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_6__["Pane"], {
+          elevation: 1,
+          margin: 12,
+          padding: 18,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "left",
+          flexDirection: "column",
+          __self: _this2,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 62,
+            columnNumber: 15
+          }
+        }, __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_6__["Heading"], {
+          size: 500,
+          __self: _this2,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 71,
+            columnNumber: 17
+          }
+        }, __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_6__["Badge"], {
+          __self: _this2,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 72,
+            columnNumber: 19
+          }
+        }, d.source), ' ', d.rawtext), __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_6__["Link"], {
+          color: "neutral",
+          href: d.url,
+          __self: _this2,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 76,
+            columnNumber: 17
+          }
+        }, d.url.replace('https://', '').replace('http://', '').replace('www.', '').slice(0, 50)));
+      }))));
     }
   }]);
 
@@ -40480,11 +40549,12 @@ module.exports = g;
 /*!************************!*\
   !*** ./pages/index.js ***!
   \************************/
-/*! exports provided: default */
+/*! exports provided: __N_SSG, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__N_SSG", function() { return __N_SSG; });
 /* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
 /* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
 /* harmony import */ var _babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js");
@@ -40527,12 +40597,15 @@ var Index = /*#__PURE__*/function (_Component) {
   Object(_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Index, [{
     key: "render",
     value: function render() {
+      var _this = this;
+
+      var clusters = this.props.clusters;
       return __jsx("div", {
         id: "App",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 10,
+          lineNumber: 11,
           columnNumber: 7
         }
       }, __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_6__["Pane"], {
@@ -40543,7 +40616,7 @@ var Index = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 11,
+          lineNumber: 12,
           columnNumber: 7
         }
       }, __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_6__["Heading"], {
@@ -40551,7 +40624,7 @@ var Index = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 12,
+          lineNumber: 13,
           columnNumber: 9
         }
       }, "COVID-19 \"How To\" Tracker")), __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_6__["Pane"], {
@@ -40562,7 +40635,7 @@ var Index = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 14,
+          lineNumber: 15,
           columnNumber: 7
         }
       }, __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_6__["Text"], {
@@ -40571,60 +40644,28 @@ var Index = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 15,
+          lineNumber: 16,
           columnNumber: 9
         }
-      }, "Common Themes")), __jsx(_components_Article__WEBPACK_IMPORTED_MODULE_7__["default"], {
-        title: "Clean / Home",
-        summary: "Example headlines include \"Covid-19 tips: How to clean your home\".",
-        badges: [{
-          "color": "neutral",
-          "label": "Cleaning"
-        }, {
-          "color": "green",
-          "label": "Home"
-        }],
-        count: 2000,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 17,
-          columnNumber: 7
-        }
-      }), __jsx(_components_Article__WEBPACK_IMPORTED_MODULE_7__["default"], {
-        title: "Masks / Handmake",
-        summary: "Example headlines include \"How to make your own mask out of toilet paper!\".",
-        badges: [{
-          "color": "red",
-          "label": "Home Made"
-        }, {
-          "color": "neutral",
-          "label": "Masks"
-        }],
-        count: 500,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 18,
-          columnNumber: 7
-        }
-      }), __jsx(_components_Article__WEBPACK_IMPORTED_MODULE_7__["default"], {
-        title: "Testing",
-        summary: "Example headlines include \"How to self diagnose COVID-19!\".",
-        badges: [{
-          "color": "red",
-          "label": "Self Diagnosis"
-        }, {
-          "color": "neutral",
-          "label": "Testing"
-        }],
-        count: 250,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 19,
-          columnNumber: 7
-        }
+      }, "Common Themes")), clusters.map(function (c) {
+        return __jsx(_components_Article__WEBPACK_IMPORTED_MODULE_7__["default"], {
+          title: c.Cluster,
+          summary: c.Summary,
+          badges: [{
+            "color": "neutral",
+            "label": "Cleaning"
+          }, {
+            "color": "green",
+            "label": "Home"
+          }],
+          articles: c.Documents,
+          __self: _this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 18,
+            columnNumber: 27
+          }
+        });
       }));
     }
   }]);
@@ -40632,11 +40673,12 @@ var Index = /*#__PURE__*/function (_Component) {
   return Index;
 }(react__WEBPACK_IMPORTED_MODULE_5__["Component"]);
 
+var __N_SSG = true;
 /* harmony default export */ __webpack_exports__["default"] = (Index);
 
 /***/ }),
 
-/***/ 2:
+/***/ 1:
 /*!************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fnickloui%2FDev%2Fsandbox%2FCOVID19-How-To-Scanner%2Fpages%2Findex.js ***!
   \************************************************************************************************************************************************/
@@ -40659,5 +40701,5 @@ module.exports = dll_2adc2403d89adc16ead0;
 
 /***/ })
 
-},[[2,"static/runtime/webpack.js","styles"]]]);
+},[[1,"static/runtime/webpack.js","styles"]]]);
 //# sourceMappingURL=index.js.map
