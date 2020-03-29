@@ -413,13 +413,21 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 }
 
 async function getStaticProps() {
-  const res = await axios__WEBPACK_IMPORTED_MODULE_4___default.a.get('http://localhost:3000/api/json');
-  const clusters = res.data;
-  return {
-    props: {
-      clusters
-    }
-  };
+  try {
+    const res = await axios__WEBPACK_IMPORTED_MODULE_4___default.a.get('/api/json');
+    const clusters = res.data;
+    return {
+      props: {
+        clusters
+      }
+    };
+  } catch (e) {
+    return {
+      props: {
+        clusters: []
+      }
+    };
+  }
 }
 /* harmony default export */ __webpack_exports__["default"] = (Index);
 

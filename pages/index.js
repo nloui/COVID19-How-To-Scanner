@@ -24,7 +24,8 @@ class Index extends Component {
 }
 
 export async function getStaticProps() {
-  const res = await axios.get('http://localhost:3000/api/json')
+  try {
+  const res = await axios.get('/api/json')
   const clusters = res.data
 
   return {
@@ -32,6 +33,14 @@ export async function getStaticProps() {
       clusters,
     },
   }
+} catch(e) {
+  return {
+    props: {
+      clusters: [],
+    },
+  }
+
+}
 }
 
 export default Index;
