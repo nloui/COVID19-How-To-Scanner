@@ -414,7 +414,7 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 
 async function getStaticProps() {
   try {
-    const res = await axios__WEBPACK_IMPORTED_MODULE_4___default.a.get('/api/json');
+    const res = await axios__WEBPACK_IMPORTED_MODULE_4___default.a.get('https://covid-19-how-to-scanner.now.sh/api/json');
     const clusters = res.data;
     return {
       props: {

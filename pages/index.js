@@ -25,7 +25,7 @@ class Index extends Component {
 
 export async function getStaticProps() {
   try {
-  const res = await axios.get('/api/json')
+  const res = await axios.get('https://covid-19-how-to-scanner.now.sh/api/json')
   const clusters = res.data
 
   return {
