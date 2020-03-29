@@ -76,7 +76,7 @@ export default async (req, res) => {
         rawtext: d._source.title,
         url: d._source.url,
         text: d._source.title.toLowerCase(),
-        source: d._source.tags[0] === 'socialmedia' ? 'social' : 'newsmedia',
+        source: d._source.tags.includes('youtube') ? 'youtube' : tags.includes('socialmedia') ? 'social' : 'newsmedia',
         count: d._source.socialcount_last || 0,
       })), 'text'), ['count'], ['desc']);
 
