@@ -20,14 +20,14 @@ class Article extends Component {
 
   render() {
     const {
-      title, summary, badges, articles,
+      title, summary, badges, articles, total,
     } = this.props;
     const { isShown } = this.state;
     return (
       <Pane display="flex" padding={16} margin={16} background="tint2" borderRadius={3} flexDirection="column">
         <Heading size={600}>
           {title}
-          <Pill display="inline-flex" margin={8}>{articles && articles.length.toLocaleString()}</Pill>
+          <Pill display="inline-flex" margin={8}>{total || articles.length.toLocaleString()}</Pill>
         </Heading>
         <Text color="muted" marginTop="default">{summary}</Text>
         <Pane display="flex" flexDirection="row" height={40} alignItems="center" justifyContent="space-between">

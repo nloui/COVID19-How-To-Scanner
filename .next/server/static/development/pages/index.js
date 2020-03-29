@@ -138,7 +138,8 @@ class Article extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       title,
       summary,
       badges,
-      articles
+      articles,
+      total
     } = this.props;
     const {
       isShown
@@ -173,7 +174,7 @@ class Article extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         lineNumber: 30,
         columnNumber: 11
       }
-    }, articles && articles.length.toLocaleString())), __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_1__["Text"], {
+    }, total || articles.length.toLocaleString())), __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_1__["Text"], {
       color: "muted",
       marginTop: "default",
       __self: this,
@@ -321,12 +322,11 @@ class Article extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 /*!************************!*\
   !*** ./pages/index.js ***!
   \************************/
-/*! exports provided: getStaticProps, default */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStaticProps", function() { return getStaticProps; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var evergreen_ui__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! evergreen-ui */ "evergreen-ui");
@@ -345,6 +345,28 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 class Index extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+  static async getInitialProps({
+    query
+  }) {
+    try {
+      let url = 'https://covid-19-how-to-scanner.now.sh/api/es';
+
+      if (query && query.mode === "2") {
+        url = 'https://covid-19-how-to-scanner.now.sh/api/json';
+      }
+
+      const res = await axios__WEBPACK_IMPORTED_MODULE_4___default.a.get(url);
+      const clusters = res.data;
+      return {
+        clusters
+      };
+    } catch (e) {
+      return {
+        clusters: []
+      };
+    }
+  }
+
   render() {
     const {
       clusters
@@ -354,7 +376,7 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 11,
+        lineNumber: 27,
         columnNumber: 7
       }
     }, __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_1__["Pane"], {
@@ -365,7 +387,7 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 12,
+        lineNumber: 28,
         columnNumber: 7
       }
     }, __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_1__["Heading"], {
@@ -373,7 +395,7 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 13,
+        lineNumber: 29,
         columnNumber: 9
       }
     }, "COVID-19 \"How To\" Tracker")), __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_1__["Pane"], {
@@ -384,7 +406,7 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 15,
+        lineNumber: 31,
         columnNumber: 7
       }
     }, __jsx(evergreen_ui__WEBPACK_IMPORTED_MODULE_1__["Text"], {
@@ -393,7 +415,7 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 16,
+        lineNumber: 32,
         columnNumber: 9
       }
     }, "Common Themes")), clusters && clusters.map(c => __jsx(_components_Article__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -404,7 +426,7 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 18,
+        lineNumber: 34,
         columnNumber: 39
       }
     })));
@@ -412,23 +434,6 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 
 }
 
-async function getStaticProps() {
-  try {
-    const res = await axios__WEBPACK_IMPORTED_MODULE_4___default.a.get('https://covid-19-how-to-scanner.now.sh/api/json');
-    const clusters = res.data;
-    return {
-      props: {
-        clusters
-      }
-    };
-  } catch (e) {
-    return {
-      props: {
-        clusters: []
-      }
-    };
-  }
-}
 /* harmony default export */ __webpack_exports__["default"] = (Index);
 
 /***/ }),

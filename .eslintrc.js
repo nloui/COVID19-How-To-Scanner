@@ -25,6 +25,8 @@ module.exports = {
     "rules": {
       "react/prefer-stateless-function": 0,
       "react/prop-types": 0,
-      "react/jsx-filename-extension": 0
+      "react/jsx-filename-extension": 0,
+      "no-tabs": 0,
+      "no-mixed-spaces-and-tabs": 0
     }
 };

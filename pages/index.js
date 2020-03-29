@@ -4,7 +4,23 @@ import Article from '../components/Article'
 import '../styles/styles.scss'
 import axios from 'axios'
 class Index extends Component {
-
+  static async getInitialProps({query}) {
+    try {
+    let url = 'https://covid-19-how-to-scanner.now.sh/api/es'
+    if(query && query.mode === "2") {
+      url = 'https://covid-19-how-to-scanner.now.sh/api/json'
+    }
+    const res = await axios.get(url)
+    const clusters = res.data
+    return {
+        clusters,
+    }
+  } catch(e) {
+    return {
+        clusters: [],
+    }
+  }
+  }
   render() {
     const { clusters } = this.props;
     return (
@@ -23,24 +39,5 @@ class Index extends Component {
 
 }
 
-export async function getStaticProps() {
-  try {
-  const res = await axios.get('https://covid-19-how-to-scanner.now.sh/api/json')
-  const clusters = res.data
-
-  return {
-    props: {
-      clusters,
-    },
-  }
-} catch(e) {
-  return {
-    props: {
-      clusters: [],
-    },
-  }
-
-}
-}
 
 export default Index;
