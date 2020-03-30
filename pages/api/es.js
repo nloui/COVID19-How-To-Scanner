@@ -13,7 +13,7 @@ export default async (req, res) => {
 
   const clusters = await Promise.all(tags.map(async (t) => {
     try {
-      const data = await axios({
+      const data1 = await axios({
         method: 'POST',
         url: 'https://flux.peakm.com/alerts/alert/stream?limit=100&sort=[{%22created%22:%20{%22order%22:%20%22desc%22}}]',
         data: {
@@ -36,7 +36,27 @@ export default async (req, res) => {
       				tag: 'news-glob',
       				friendly: 'News Global (Limited)',
       				meta: null,
-      			}, {
+      			}],
+      			sources: [],
+      		},
+      		search: 'workspaces',
+      	},
+        },
+      });
+      const data2 = await axios({
+        method: 'POST',
+        url: 'https://flux.peakm.com/alerts/alert/stream?limit=100&sort=[{%22created%22:%20{%22order%22:%20%22desc%22}}]',
+        data: {
+      	this: {
+      		value: null,
+      		text: `title: (("what should i do" || "what are" || "how to" || "how do you" || "where can i" || "when will" || "why are" || "what do" || "where") AND ("coronavirus"||"covid-19") AND "${t}")`,
+      		case_sensitive: false,
+      		advanced_search: true,
+      	},
+      	happens: {
+      		text: 'appears in News, News Global (Limited), Twitter, Reddit, Youtube, Quora',
+      		value: {
+      			tags: [{
                 id: 'twitter',
                 tag: 'twitter',
                 meta: {
@@ -71,7 +91,11 @@ export default async (req, res) => {
       	},
         },
       });
-
+      const data = {
+        data: {
+          stream: [...data1.data.stream, ...data2.data.stream],
+        },
+      };
       const docs = data && data.data && _.orderBy(_.uniqBy(data.data.stream.map((d) => ({
         rawtext: d._source.title,
         url: d._source.url,
