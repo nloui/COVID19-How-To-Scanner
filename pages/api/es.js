@@ -15,7 +15,7 @@ export default async (req, res) => {
     try {
       const data = await axios({
         method: 'POST',
-        url: 'https://flux.peakm.com/alerts/alert/stream?limit=30&sort=[{%22created%22:%20{%22order%22:%20%22desc%22}}]',
+        url: 'https://flux.peakm.com/alerts/alert/stream?limit=100&sort=[{%22created%22:%20{%22order%22:%20%22desc%22}}]',
         data: {
       	this: {
       		value: null,
@@ -109,5 +109,6 @@ export default async (req, res) => {
     }
     return { ...c };
   });
+  res.setHeader('Cache-Control', 's-maxage=10800');
   res.end(JSON.stringify(_.orderBy(cluster_out, ['total'], ['desc'])));
 };
