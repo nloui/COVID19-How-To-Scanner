@@ -108,7 +108,7 @@ export default async (req, res) => {
         Cluster: t,
         Documents: docs,
         Words: 'TBD',
-        Summary: `${docs[0] && docs[0].rawtext} (${extractDomain(docs[0] && docs[0].url)})`,
+        Summary: docs.slice(0, 3).map((c) => `${c && c.rawtext} (${extractDomain(c && c.url)})`),
         total: data && data.data && data.data.stream.reduce((e, i) => e + (i._source.socialcount_last || 0), 0),
       };
     } catch (e) {

@@ -29,7 +29,7 @@ class Article extends Component {
           {title}
 
         </Heading>
-        <Text color="muted" marginTop="default">{summary}</Text>
+        <Text color="muted" marginTop="default">{summary && summary.join('<br />')}</Text>
         <Pane display="flex" flexDirection="row" height={40} alignItems="center" justifyContent="space-between">
           <Pane paddingTop={16}>
             {badges.map(
