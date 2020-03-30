@@ -133,6 +133,6 @@ export default async (req, res) => {
     }
     return { ...c };
   });
-  // res.setHeader('Cache-Control', 's-maxage=10800');
+  res.setHeader('Cache-Control', 's-maxage=600');
   res.end(JSON.stringify(_.orderBy(cluster_out, ['total'], ['desc'])));
 };
