@@ -115,7 +115,7 @@ export default async (req, res) => {
       return null;
     }
   }));
-  const cluster_out = clusters.filter((c) => c).map((c) => {
+  const cluster_out = clusters.filter((c) => c && c.total > 0).map((c) => {
     // console.log();
     if (c.Words === 'TBD') {
       c.Words = [];
